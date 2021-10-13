@@ -255,6 +255,7 @@ kratos以是当前容器网络服务CPU利用率的80%作为控制信号临界�
 - Pass&RT
 
 pass和RT分别表示处理完成请求数和对应请求所消耗的时间，即TPS和Latency。相应的，我们的测量办法同样是通过滑动窗口对pass和RT进行统计，如下图。
+
 ![图 13](images/dccceb55fbf98a67282fa0c80baac471ef30cd6c89c004503d3988dac608ff15.png)  
 sample window表示窗口采样周期，sample bucket表示周期内的采样批次。假设现在采样窗口时间为1000ms，bucket采样批次时间持续500ms，那么就表示在前500ms内完成的请求数和这些请求消耗的平均时延都会被原子（atomic）统计在bucket1中。同理，当第501ms会被统计在bucket2中，当第1001ms时会再次回到bucket1，以此类推。可见当bucket足够多，以及统计间隔足够小时最能够得到真实的数据，更有效的应对秒内流量洪峰。
 
