@@ -148,7 +148,7 @@ TCP是面向字节流保序的传输层协议。在面对未知的网络中转�
 ![图 4](images/c7a6bfd087e24f3aaaf5b501bce03ca25d1c90dc539857a7dc4f51551762ebb7.png)  
 我们可通过 **网络节点每秒传输数据的能力**即带宽（bandwidth）**乘** **数据包在节点中的传输处理时间时延**（即latency$\approx$RTT）的结果作为网络上正在处理的报文数量，即**带宽时延积BDP**。BDP决定了需要向网络中发送的数据包量。
 
-综合上述，我们可以确定理想情况下向网络传输数据的最佳数量：
+综合上述，我们可以确定理想情况下向网络传输数据的最佳数量，即瓶颈期指标特征：
   `BestBDP = maxBW * minRTT`
 
 显然，我们应对负载的关键指标测量已经不仅要关注**关键结果**，还与**负载因子**进行综合。相对的，多年来基于丢包的拥塞控制算法都只关注了**时延**这单一指标。
@@ -280,21 +280,22 @@ sample window表示窗口采样周期，sample bucket表示周期内的采样批
 另外，对于自适应限流技术的发展，从Netflix最早基于传输层vegas的限流手段推出中间件`concurrency-limits`， 再到如今基于TCP-BBR的自适应限流算法改进与实现，都体现了很强的发散性和优化空间。期待读者的进一步讨论！
 
 # Reference
-https://sre.google/sre-book/handling-overload/
+Google SRE：https://sre.google/sre-book/handling-overload/
 
-https://sentinelguard.io/zh-cn/docs/system-adaptive-protection.html
+Alibaba Sentinel：https://sentinelguard.io/zh-cn/docs/system-adaptive-protection.html
 
-https://netflixtechblog.medium.com/performance-under-load-3e6fa9a60581
+Netflix 限流技术：https://netflixtechblog.medium.com/performance-under-load-3e6fa9a60581
 
-https://blog.csdn.net/m0_38106113/article/details/81542863
+TensorFlow滑动窗口简读：https://blog.csdn.net/m0_38106113/article/details/81542863
 
-https://github.com/go-kratos/kratos/tree/v1.0.x/pkg/ratelimit/bbr
+Kratos 自适应限流源码：https://github.com/go-kratos/kratos/tree/v1.0.x/pkg/ratelimit/bbr
 
+CoDel 排队论简读：https://blog.csdn.net/dog250/article/details/72849893
+
+TCP-BBR:
 https://queue.acm.org/detail.cfm?id=3022184
 
 https://www.net.in.tum.de/fileadmin/bibtex/publications/papers/IFIP-Networking-2018-TCP-BBR.pdf
-
-https://blog.csdn.net/dog250/article/details/72849893
 
 https://blog.csdn.net/russell_tao/article/details/98723451
 
